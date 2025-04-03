@@ -1,8 +1,12 @@
 package com.social.media.models;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter@Setter@ToString
 public class Post {
 
     @Id

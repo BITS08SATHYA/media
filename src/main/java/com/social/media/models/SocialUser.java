@@ -1,21 +1,24 @@
 package com.social.media.models;
 
 import jakarta.persistence.*;
+import lombok.*;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class SocialUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "social_profile_id")
+    @OneToOne(mappedBy = "user")
+//    @JoinColumn(name = "social_profile_id")
     private SocialProfile socialProfile;
 
     @OneToMany(mappedBy = "socialUser")
@@ -28,4 +31,9 @@ public class SocialUser {
             inverseJoinColumns = @JoinColumn(name = "group_id")
     )
     private Set<SocialGroup> socialGroups = new HashSet<>();
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
