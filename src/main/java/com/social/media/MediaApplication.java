@@ -14,11 +14,6 @@ public class MediaApplication {
 		SpringApplication.run(MediaApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner initializeData() {
-		return (args -> {
 
-		});
-	}
 
 }

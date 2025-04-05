@@ -5,6 +5,7 @@ import com.social.media.models.SocialUser;
 import com.social.media.services.SocialService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SocialController {
 
+    @Autowired
     private SocialService socialService;
 
     @GetMapping("/social/users")
@@ -30,6 +32,4 @@ public class SocialController {
     public ResponseEntity<SocialUser> saveUser(@RequestBody SocialUser socialUser){
         return new ResponseEntity<>(socialService.saveUser(socialUser), HttpStatus.CREATED);
     }
-
-
 }
